@@ -1,5 +1,7 @@
 # Bindings for Direct Graphics API
 
+Word of warning: This is still bit sharp edged module. I advice to stay calm if everything doesn't work.
+
 # How To Install
 
  * Install https://github.com/cheery/dg according to instructions.
