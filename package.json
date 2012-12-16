@@ -1,0 +1,23 @@
+{
+  "name": "node-dg",
+  "version": "1.0.0",
+  "description": "Direct Graphics bindings for node.js",
+  "main": "dg.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cheery/node-dg.git"
+  },
+  "dependencies": {
+      "dg-webgl": ">= 1.0.0"
+  },
+  "keywords": [
+    "graphics"
+  ],
+  "author": "Henri Tuhola",
+  "license": "BSD",
+  "gypfile": true
+}
