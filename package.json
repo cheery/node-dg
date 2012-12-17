@@ -1,5 +1,5 @@
 {
-  "name": "node-dg",
+  "name": "dg",
   "version": "1.0.0",
   "description": "Direct Graphics bindings for node.js",
   "main": "dg.js",
