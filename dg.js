@@ -26,12 +26,16 @@ exports.getFullscreen = function(options) {
     var display = dg.openDisplayBRCM(0);
     var screen = dg.fullscreenResolutionBRCM(display);
     var id = dg.createFullscreenSurfaceBRCM(display, 0, 0, screen.width, screen.height, 0, options);
+    var width = screen.width;
+    var height = screen.height;
+    if (options.width != undefined) width = options.width;
+    if (options.height != undefined) height = options.height;
     return {
         display: display,
         getContext: getContext,
         close: fullscreenClose,
-        width: screen.width,
-        height: screen.height,
+        width: width,
+        height: height,
         id: id
     };
 };
@@ -42,8 +46,8 @@ exports.createSurface = function(width, height, options) {
     return {
         getContext: getContext,
         close: surfaceClose,
-        width: screen.width,
-        height: screen.height,
+        width: width,
+        height: height,
         id: id
     };
 };

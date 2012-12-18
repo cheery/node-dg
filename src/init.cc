@@ -106,11 +106,19 @@ Handle<Value> CreateFullscreenSurfaceBRCM (const Arguments& args)
     HandleScope scope;
     Local<Object> options = args[6]->ToObject();
     Local<Value> v;
+    int dst_width = args[3]->IntegerValue();
+    int dst_height = args[4]->IntegerValue();
+    int width = dst_width;
+    int height = dst_height;
     int alpha = 8, stencil = 0;
     v = options->Get(String::NewSymbol("alpha"));
     if (!v->IsUndefined()) alpha = v->IntegerValue();
     v = options->Get(String::NewSymbol("stencil"));
     if (!v->IsUndefined()) stencil = v->IntegerValue();
+    v = options->Get(String::NewSymbol("width"));
+    if (!v->IsUndefined()) width = v->IntegerValue();
+    v = options->Get(String::NewSymbol("height"));
+    if (!v->IsUndefined()) height = v->IntegerValue();
     int attr[] = {
         DG_RED_CHANNEL, 8,
         DG_GREEN_CHANNEL, 8,
@@ -119,12 +127,12 @@ Handle<Value> CreateFullscreenSurfaceBRCM (const Arguments& args)
         DG_STENCIL_CHANNEL, stencil,
         0
     };
-    dg_surface s = dgCreateFullscreenSurfaceBRCM(
+    dg_surface s = dgCreateFullscreenSurfaceBRCM2(
         (dg_display_brcm)External::Unwrap(args[0]),
+        width, height,
         args[1]->IntegerValue(),
         args[2]->IntegerValue(),
-        args[3]->IntegerValue(),
-        args[4]->IntegerValue(),
+        dst_width, dst_height,
         args[5]->IntegerValue(),
         attr
     );
@@ -156,8 +164,8 @@ Handle<Value> GetError (const Arguments& args)
 
 static void Init(Handle<Object> target)
 {
-    if (!dgValidVersion(1, 0)) {
-        ThrowException(String::NewSymbol("dg-1.0 unavailable"));
+    if (!dgValidVersion(1, 1)) {
+        ThrowException(String::NewSymbol("dg-1.1 unavailable"));
     }
 
     target->Set(String::NewSymbol("createSurface"), FunctionTemplate::New(CreateSurface)->GetFunction());
