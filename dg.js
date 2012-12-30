@@ -52,4 +52,6 @@ exports.createSurface = function(width, height, options) {
     };
 };
 
-exports.surfaceId = dg.surfaceId;
+exports.surfaceId = function(surface) {
+    return new Buffer(dg.surfaceId(surface.id));
+};

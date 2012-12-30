@@ -45,7 +45,11 @@ Handle<Value> SurfaceId (const Arguments& args)
 {
     HandleScope scope;
     const char* a = dgSurfaceId((dg_surface)External::Unwrap(args[0]));
-    return scope.Close(String::New(a, DG_SURFACE_ID_LENGTH));
+    Handle<Array> result = Array::New(DG_SURFACE_ID_LENGTH);
+    for(int i = 0; i < DG_SURFACE_ID_LENGTH; i++) {
+        result->Set(i, Integer::New(a[i]));
+    }
+    return scope.Close(result);
 }
 
 Handle<Value> DestroySurface (const Arguments& args)

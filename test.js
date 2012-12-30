@@ -1,5 +1,10 @@
 var dg = require('./dg');
 
+var other = dg.createSurface(511, 511);
+
+var data = dg.surfaceId(other);
+console.log(data);
+
 var surface = dg.getFullscreen({});
 var gl = surface.getContext('webgl');
 
