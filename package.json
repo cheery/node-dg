@@ -1,6 +1,6 @@
 {
   "name": "dg",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Direct Graphics bindings for node.js",
   "main": "dg.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "url": "git@github.com:cheery/node-dg.git"
   },
   "dependencies": {
-    "dg-webgl": ">= 1.0.0"
+    "dg-webgl": ">= 1.1.0"
   },
   "keywords": [
     "graphics"

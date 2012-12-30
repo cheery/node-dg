@@ -22,6 +22,12 @@ var nextColor = randomColor();
 var lastTime = Date.now();
 var nextTime = Date.now() + 500;
 
+var t = gl.createTexture();
+
+gl.bindTexture(gl.TEXTURE_2D, t);
+gl.textureSourceDG(gl.TEXTURE_2D, data);
+
+
 var loop = function () {
     var i = (Date.now() - lastTime) / (nextTime - lastTime);
     if (i >= 1.0) {
